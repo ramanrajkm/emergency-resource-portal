@@ -57,8 +57,11 @@
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" required>
                
-                <label for="location">Location:</label>
-                <input type="text" id="location" required>
+             <label for="location">Location:</label>
+<div style="display: flex; gap: 8px; align-items: center; margin-bottom: 15px;">
+  <input type="text" id="location" required style="flex: 1;">
+  <button type="button" onclick="getLocation()" style="padding: 8px 12px; cursor: pointer;">Use My Location</button>
+</div>
  
                 <label for="emergencyType">Emergency Type:</label>
                 <select id="emergencyType" required>
