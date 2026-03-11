@@ -57,20 +57,52 @@
                 <label for="name">Your Name:</label>
                 <input type="text" id="name" required>
                
-             <label for="location">Location:</label>
-<div style="display: flex; gap: 8px; align-items: center; margin-bottom: 15px;">
-  <input type="text" id="location" required style="flex: 1;">
-  <button type="button" onclick="getLocation()" style="padding: 8px 12px; cursor: pointer;">Use My Location</button>
-</div>
+            <label for="location" style="display:flex; align-items:center; gap:10px;">
+  Location:
+  <button type="button" onclick="getLocation()" style="padding:6px 12px; cursor:pointer;">
+    Use My Location
+  </button>
+</label>
+
+<input type="text" id="location" required style="margin-bottom:15px;">
  
                 <label for="emergencyType">Emergency Type:</label>
                 <select id="emergencyType" required>
-                    <option value="">Select</option>
-                    <option value="Fire">Fire</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Flood">Flood</option>
-                    <option value="Other">Other</option>
-                </select>
+    <option value="">Select Emergency Type</option>
+
+    <option value="Fire">Fire</option>
+    <option value="Forest Fire">Forest Fire</option>
+    <option value="Gas Leak">Gas Leak</option>
+    <option value="Explosion">Explosion</option>
+
+    <option value="Medical Emergency">Medical Emergency</option>
+    <option value="Heart Attack">Heart Attack</option>
+    <option value="Injury">Serious Injury</option>
+    <option value="Poisoning">Poisoning</option>
+
+    <option value="Flood">Flood</option>
+    <option value="Earthquake">Earthquake</option>
+    <option value="Cyclone">Cyclone / Storm</option>
+    <option value="Landslide">Landslide</option>
+    <option value="Tsunami">Tsunami</option>
+    <option value="Drought">Drought</option>
+
+    <option value="Road Accident">Road Accident</option>
+    <option value="Train Accident">Train Accident</option>
+    <option value="Aircraft Accident">Aircraft Accident</option>
+
+    <option value="Building Collapse">Building Collapse</option>
+    <option value="Bridge Collapse">Bridge Collapse</option>
+
+    <option value="Power Failure">Power Failure</option>
+    <option value="Water Supply Issue">Water Supply Issue</option>
+
+    <option value="Animal Attack">Animal Attack</option>
+    <option value="Missing Person">Missing Person</option>
+    <option value="Crime / Theft">Crime / Theft</option>
+
+    <option value="Other">Other</option>
+</select>
 
                 <label for="contact">Contact Number:</label>
 <input 
