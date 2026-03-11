@@ -1,0 +1,184 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Background Image */
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+    background: url('https://i.natgeofe.com/n/79dd0b3b-0038-4d3c-a947-a8e3a0ecb9d5/52801.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: rgba(204,0,0,0.9);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+/* Navigation */
+header nav a {
+    color: white;
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main layout */
+main {
+    padding: 20px;
+}
+
+/* Transparent sections */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(255,255,255,0.35); /* very transparent */
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+}
+
+/* Training modules */
+.module {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2); /* transparent */
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(45deg,#cc0000,#ff3333);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg,#990000,#cc0000);
+}
+
+/* Form styling */
+form {
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(204,0,0,0.9);
+    color: white;
+}
+
+/* Popup Modal */
+.popup-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Popup content */
+.popup-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid #cc0000;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Popup close button */
+.popup-close {
+    color: #cc0000;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    color: #004999;
+}
+
+/* Custom popup */
+#customPopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100vw;
+    height:100vh;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#customPopup div {
+    background: #a6f3f5;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 320px;
+    text-align: center;
+    box-shadow: 0 0 15px black;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header nav a {
+        display: block;
+        margin: 6px 0;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
