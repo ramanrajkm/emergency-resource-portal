@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Training & Emergency Portal</title>
+    <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+ 
+<header>
+        <h1>Citizen Training & Emergency Resources Portal</h1>
+        <nav>
+            <a href="training.html">Training</a>
+            <a href="#resources">Resources</a>
+            <a href="#report">Report Emergency</a>
+        </nav>
+    </header>
+ 
+    <main>
+        <div id="trainingContent" style="display:none; margin-top:20px; padding:15px; border:1px solid #0066cc; border-radius:6px; background-color:#e6f0ff;">
+    <h3 id="trainingTitle"></h3>
+    <div id="trainingText"></div>
+    <button onclick="closeTraining()" style="margin-top:10px;">Close</button>
+</div>
+        <!-- Training Section -->
+        <section id="training">
+            <h1>Training Modules</h1>
+            <div class="module" data-title="Fire Safety">
+                <h3>Fire Safety</h3>
+                <p>Learn how to prevent and handle fire emergencies.</p>
+                <button onclick="startTraining('Fire Safety')">Start Module</button>
+            </div>
+            <div class="module" data-title="First Aid Basics">
+                <h3>First Aid Basics</h3>
+                <p>Essential first aid skills for everyone.</p>
+                <button onclick="startTraining('First Aid Basics')">Start Module</button>
+            </div>
+        </section>
+ 
+        <!-- Resources Section -->
+        <section id="resources">
+            <h2>Emergency Resources</h2>
+            <ul>
+                <li>Fire Department: 101</li>
+                <li>Police: 100</li>
+                <li>Ambulance: 102</li>
+                <li>Nearest Shelter: Community Hall, Main Street</li>
+            </ul>
+        </section>
+ 
+        <!-- Report Emergency Section -->
+        <section id="report">
+            <h2>Report an Emergency</h2>
+            <form id="reportForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
+               
+                <label for="location">Location:</label>
+                <input type="text" id="location" required>
+ 
+                <label for="emergencyType">Emergency Type:</label>
+                <select id="emergencyType" required>
+                    <option value="">Select</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Medical">Medical</option>
+                    <option value="Flood">Flood</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="contact">Contact Number:</label>
+<input 
+type="tel" 
+id="contact" 
+required 
+placeholder="Enter 10 digit phone number"
+pattern="[0-9]{10}"
+maxlength="10"
+title="Please enter exactly 10 digits"> 
+                <label for="description">Description:</label>
+                <textarea id="description" rows="4" required></textarea>
+ 
+                <button type="submit">Submit Report</button>
+            </form>
+            <div id="reportMessage"></div>
+        </section>
+    </main>
+ 
+    <footer>
+        <p>&copy; 2026 Citizen Portal</p>
+    </footer>
+ 
+    <script src="script.js"></script>
+    <!-- Custom Popup Modal -->
+<div id="popupModal" class="popup-modal">
+    <div class="popup-content">
+        <span id="popupClose" class="popup-close">&times;</span>
+        <p id="popupMessage"></p>
+    </div>
+</div>
+<div id="customPopup" style="display:none; position: fixed; top: 0; left: 0; width:100vw; height:100vh; background: rgba(0,0,0,0.4); 
+    justify-content: center; align-items: center; z-index: 9999;">
+  <div style="background: white; padding: 20px; border-radius: 8px; max-width: 300px; text-align: center; box-shadow: 0 0 10px #000;">
+    <p style="font-size: 16px; margin-bottom: 20px;">✅ Your report has been submitted successfully!</p>
+    <button onclick="closePopup()" style="padding: 8px 15px; background:#0066cc; color:#fff; border:none; border-radius: 4px; cursor:pointer;">OK</button>
+  </div>
+</div>
+</body>
+</html>
