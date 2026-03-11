@@ -1,4 +1,4 @@
-// Submit form and send data to Google Sheets
+// Existing function to start training modules
 function startTraining(moduleName) {
     const moduleDiv = document.querySelector(`.module[data-title="${moduleName}"]`);
     if (!moduleDiv) return;
@@ -43,15 +43,25 @@ function startTraining(moduleName) {
 
     moduleDiv.appendChild(guidelinesDiv);
 }
+
+// Form submission logic
 document.getElementById("reportForm").addEventListener("submit", function(e) {
     e.preventDefault(); // Prevent default form submission
 
+    const contactInput = document.getElementById("contact").value.trim();
+
+    // Validate contact number length (must be exactly 10 digits)
+    if (!/^\d{10}$/.test(contactInput)) {
+        alert("❌ Please enter a valid 10-digit contact number.");
+        return;
+    }
+
     const data = {
-        name: document.getElementById("name").value,
-        location: document.getElementById("location").value,
+        name: document.getElementById("name").value.trim(),
+        location: document.getElementById("location").value.trim(),
         emergencyType: document.getElementById("emergencyType").value,
-        contact: document.getElementById("contact").value,
-        description: document.getElementById("description").value
+        contact: contactInput,
+        description: document.getElementById("description").value.trim()
     };
 
     fetch("https://script.google.com/macros/s/AKfycbxKAF01CrlRTgi5YKmWE9bB6VH6BIt_IwayIPVoEMcoLjRmWwXKsJKhxSmjcfAVpFcn7w/exec", { // Replace with your Web App URL
@@ -59,18 +69,62 @@ document.getElementById("reportForm").addEventListener("submit", function(e) {
         body: JSON.stringify(data)
     })
     .then(response => response.json())
-   .then(result => {
-    showPopup(); // show popup immediately
-    document.getElementById("reportForm").reset();
-})
+    .then(result => {
+        if(result.status === "success") {
+            showPopup();
+            document.getElementById("reportForm").reset();
+        } else {
+            alert("❌ Error submitting report: " + result.message);
+        }
+    })
     .catch(err => {
         alert("❌ Error submitting report: " + err);
     });
 });
+
+// Popup show/hide functions
 function showPopup() {
-  document.getElementById('customPopup').style.display = 'flex';
+    document.getElementById('customPopup').style.display = 'flex';
 }
 
 function closePopup() {
-  document.getElementById('customPopup').style.display = 'none';
+    document.getElementById('customPopup').style.display = 'none';
+}
+
+// === Auto location feature ===
+
+// Call this function on clicking the "Use My Location" button
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+
+function success(position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    // Use reverse geocoding to get a human-readable address
+    reverseGeocode(lat, lon);
+}
+
+function error() {
+    alert("Unable to retrieve your location.");
+}
+
+function reverseGeocode(lat, lon) {
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.display_name) {
+            document.getElementById('location').value = data.display_name;
+        } else {
+            document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
+        }
+    })
+    .catch(() => {
+        document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
+    });
 }
