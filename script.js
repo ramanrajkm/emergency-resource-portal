@@ -1,4 +1,6 @@
-// Existing function to start training modules
+// ===============================
+// Training Modules
+// ===============================
 function startTraining(moduleName) {
     const moduleDiv = document.querySelector(`.module[data-title="${moduleName}"]`);
     if (!moduleDiv) return;
@@ -28,7 +30,8 @@ function startTraining(moduleName) {
                 <li>Keep flammable materials away from heat sources.</li>
             </ul>
         `;
-    } else if (moduleName === 'First Aid Basics') {
+    } 
+    else if (moduleName === 'First Aid Basics') {
         guidelinesDiv.innerHTML = `
             <h4>First Aid Guidelines</h4>
             <ul>
@@ -44,13 +47,22 @@ function startTraining(moduleName) {
     moduleDiv.appendChild(guidelinesDiv);
 }
 
-// Form submission logic
-document.getElementById("reportForm").addEventListener("submit", function(e) {
-    e.preventDefault(); // Prevent default form submission
+
+// ===============================
+// Emergency Report Form
+// ===============================
+
+const form = document.getElementById("reportForm");
+
+if (form) {
+
+form.addEventListener("submit", function(e) {
+
+    e.preventDefault();
 
     const contactInput = document.getElementById("contact").value.trim();
 
-    // Validate contact number length (must be exactly 10 digits)
+    // Validate phone number
     if (!/^\d{10}$/.test(contactInput)) {
         alert("❌ Please enter a valid 10-digit contact number.");
         return;
@@ -64,50 +76,65 @@ document.getElementById("reportForm").addEventListener("submit", function(e) {
         description: document.getElementById("description").value.trim()
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbxKAF01CrlRTgi5YKmWE9bB6VH6BIt_IwayIPVoEMcoLjRmWwXKsJKhxSmjcfAVpFcn7w/exec", { // Replace with your Web App URL
-        method: "POST",
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if(result.status === "success") {
-            showPopup();
-            document.getElementById("reportForm").reset();
-        } else {
-            alert("❌ Error submitting report: " + result.message);
-        }
-    })
-    .catch(err => {
-        alert("❌ Error submitting report: " + err);
-    });
+    fetch("https://script.google.com/macros/s/AKfycbxKAF01CrlRTgi5YKmWE9bB6VH6BIt_IwayIPVoEMcoLjRmWwXKsJKhxSmjcfAVpFcn7w/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+})
+.then(response => response.text())
+.then(result => {
+
+    console.log(result);
+
+    showPopup(); // this will show popup
+    document.getElementById("reportForm").reset();
+
+})
+.catch(err => {
+    alert("Error submitting report");
 });
 
-// Popup show/hide functions
+});
+
+}
+
+
+// ===============================
+// Popup Functions
+// ===============================
+
 function showPopup() {
-    document.getElementById('customPopup').style.display = 'flex';
+    const popup = document.getElementById("customPopup");
+    if (popup) popup.style.display = "flex";
 }
 
 function closePopup() {
-    document.getElementById('customPopup').style.display = 'none';
+    const popup = document.getElementById("customPopup");
+    if (popup) popup.style.display = "none";
 }
 
-// === Auto location feature ===
 
-// Call this function on clicking the "Use My Location" button
+// ===============================
+// Auto Location Feature
+// ===============================
+
 function getLocation() {
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(success, error);
-    } else {
+    } 
+    else {
         alert("Geolocation is not supported by this browser.");
     }
+
 }
 
 function success(position) {
+
     const lat = position.coords.latitude;
     const lon = position.coords.longitude;
 
-    // Use reverse geocoding to get a human-readable address
     reverseGeocode(lat, lon);
+
 }
 
 function error() {
@@ -115,50 +142,72 @@ function error() {
 }
 
 function reverseGeocode(lat, lon) {
+
     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
     .then(response => response.json())
     .then(data => {
+
+        const locationInput = document.getElementById("location");
+
+        if (!locationInput) return;
+
         if (data && data.display_name) {
-            document.getElementById('location').value = data.display_name;
-        } else {
-            document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
+            locationInput.value = data.display_name;
+        } 
+        else {
+            locationInput.value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
         }
+
     })
     .catch(() => {
-        document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
+
+        const locationInput = document.getElementById("location");
+        if (locationInput) {
+            locationInput.value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
+        }
+
     });
+
 }
+
+
+// ===============================
+// Nearby Emergency Services Map
+// ===============================
+
 function findNearby() {
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showMap, showError);
-} else {
-    alert("Geolocation is not supported by this browser.");
-}
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showMap, showError);
+    } 
+    else {
+        alert("Geolocation is not supported by this browser.");
+    }
 
 }
 
 function showMap(position) {
 
-let lat = position.coords.latitude;
-let lon = position.coords.longitude;
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
 
-let map = document.getElementById("mapContainer");
-if(!map) return;
+    let map = document.getElementById("mapContainer");
 
-map.innerHTML = `
-<iframe
-width="100%"
-height="450"
-style="border:0"
-loading="lazy"
-allowfullscreen
-src="https://www.google.com/maps?q=${lat},${lon}&z=14&output=embed">
-</iframe>
-`;
+    if(!map) return;
+
+    map.innerHTML = `
+    <iframe
+        width="100%"
+        height="450"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        src="https://www.google.com/maps?q=${lat},${lon}&z=14&output=embed">
+    </iframe>
+    `;
 
 }
 
 function showError() {
-alert("Unable to retrieve your location.");
+    alert("Unable to retrieve your location.");
 }
