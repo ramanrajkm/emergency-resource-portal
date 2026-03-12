@@ -1,76 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emergency Resources</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Emergency</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
+    <header>
+        <h1>Citizen Emergency Report Portal</h1>
+        <nav>
+            <a href="index.html">Back to Home</a>
+        </nav>
+    </header>
 
-<header>
-<h1>Emergency Resources</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="training.html">Training</a>
-</nav>
-</header>
+    <main>
+        <section id="reportSection">
+            <h2>Report an Emergency</h2>
+            <form id="reportForm">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" required>
 
-<main>
+               <label for="location" style="display:flex; align-items:center; gap:10px;">
+  Location:
+  <button type="button" onclick="getLocation()" style="padding:6px 12px; cursor:pointer;">
+    Use My Location
+  </button>
+</label>
 
-<section>
-<h2>Emergency Contact Numbers</h2>
-<p>🚨 <strong>General Emergency</strong></p>
-<p><a href="tel:112" title="Click to call 112">112</a> – National Emergency Helpline (Police, Fire, Medical combined)</p>
+<input type="text" id="location" required style="margin-bottom:15px;">
 
-<p>👮 <strong>Police</strong></p>
-<p><a href="tel:100" title="Click to call 100">100</a> – Police emergency</p>
+                <label for="emergencyType">Emergency Type:</label>
+               <select id="emergencyType" required>
+    <option value="">Select Emergency Type</option>
 
-<p>🚑 <strong>Medical</strong></p>
-<p><a href="tel:102" title="Click to call 102">102</a> – Ambulance services</p>
-<p><a href="tel:108" title="Click to call 108">108</a> – Emergency medical service & ambulance (widely used across states)</p>
+    <optgroup label="Natural Disasters">
+        <option value="Flood">Flood</option>
+        <option value="Earthquake">Earthquake</option>
+        <option value="Cyclone">Cyclone / Storm</option>
+        <option value="Landslide">Landslide</option>
+        <option value="Tsunami">Tsunami</option>
+        <option value="Drought">Drought</option>
+        <option value="Forest Fire">Forest Fire</option>
+    </optgroup>
 
-<p>🔥 <strong>Fire</strong></p>
-<p><a href="tel:101" title="Click to call 101">101</a> – Fire brigade</p>
+    <optgroup label="Medical Emergencies">
+        <option value="Medical Emergency">Medical Emergency</option>
+        <option value="Heart Attack">Heart Attack</option>
+        <option value="Serious Injury">Serious Injury</option>
+        <option value="Poisoning">Poisoning</option>
+    </optgroup>
 
-<p>👩 <strong>Women & Children Safety</strong></p>
-<p><a href="tel:1091" title="Click to call 1091">1091</a> – Women helpline</p>
-<p><a href="tel:1098" title="Click to call 1098">1098</a> – Child helpline</p>
+    <optgroup label="Fire & Hazard">
+        <option value="Fire">Fire</option>
+        <option value="Gas Leak">Gas Leak</option>
+        <option value="Explosion">Explosion</option>
+    </optgroup>
 
+    <optgroup label="Accidents">
+        <option value="Road Accident">Road Accident</option>
+        <option value="Train Accident">Train Accident</option>
+        <option value="Aircraft Accident">Aircraft Accident</option>
+    </optgroup>
 
-<p>🚗 <strong>Road Accidents</strong></p>
-<p><a href="tel:1073" title="Click to call 1073">1073</a> – National Highway emergency helpline</p>
+    <optgroup label="Infrastructure Issues">
+        <option value="Building Collapse">Building Collapse</option>
+        <option value="Bridge Collapse">Bridge Collapse</option>
+        <option value="Power Failure">Power Failure</option>
+        <option value="Water Supply Issue">Water Supply Issue</option>
+    </optgroup>
 
-<p>🌊 <strong>Disaster / Natural Calamity</strong></p>
-<p><a href="tel:1078" title="Click to call 1078">1078</a> – Disaster management helpline</p>
-<p><a href="tel:1070" title="Click to call 1070">1070</a> – State disaster control room</p>
+    <optgroup label="Public Safety">
+        <option value="Animal Attack">Animal Attack</option>
+        <option value="Missing Person">Missing Person</option>
+        <option value="Crime / Theft">Crime / Theft</option>
+    </optgroup>
 
-<p>🧓 <strong>Senior Citizens</strong></p>
-<p><a href="tel:14567" title="Click to call 14567">14567</a> – Elderly helpline</p>
+    <option value="Other">Other</option>
+</select>
 
-<p>📱 <strong>Railway</strong></p>
-<p><a href="tel:139" title="Click to call 139">139</a> – Railway enquiry & assistance</p>
-<p><a href="tel:182" title="Click to call 182">182</a> – Railway protection force (security)</p>
-</section>
+                <label for="contact">Contact Number:</label>
+                <input type="tel" id="contact" required placeholder="Enter 10 digit phone number" pattern="[0-9]{10}" maxlength="10">
 
+                <label for="description">Description:</label>
+                <textarea id="description" rows="4" required></textarea>
 
-<section>
-<h2>Nearby Emergency Services</h2>
+                <button type="submit">Submit Report</button>
+            </form>
+            <div id="reportMessage"></div>
+        </section>
+    </main>
 
-<button onclick="findNearby()">Locate Me & Find Nearby Services</button>
-
-<div id="mapContainer" style="margin-top:20px;"></div>
-
-</section>
-
-
-</main>
-
-<footer>
-<p>&copy; 2026 Citizen Portal</p>
-</footer>
-<script src="script.js"></script>
-
+    <footer>
+        <p>&copy; 2026 Citizen Portal</p>
+    </footer>
 </body>
 </html>
