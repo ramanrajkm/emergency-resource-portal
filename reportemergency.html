@@ -95,5 +95,23 @@
     <footer>
         <p>&copy; 2026 Citizen Portal</p>
     </footer>
+    <!-- Success Popup -->
+<div id="customPopup" style="display:none; position: fixed; top:0; left:0; width:100vw; height:100vh; background: rgba(0,0,0,0.4); 
+justify-content:center; align-items:center; z-index:9999;">
+
+  <div style="background:white; padding:20px; border-radius:8px; max-width:300px; text-align:center; box-shadow:0 0 10px #000;">
+    
+    <p style="font-size:16px; margin-bottom:20px;">
+      ✅ Your report has been submitted successfully!
+    </p>
+
+    <button onclick="closePopup()" 
+    style="padding:8px 15px; background:#0066cc; color:#fff; border:none; border-radius:4px; cursor:pointer;">
+      OK
+    </button>
+
+  </div>
+
+</div>
 </body>
 </html>
