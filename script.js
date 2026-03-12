@@ -128,3 +128,37 @@ function reverseGeocode(lat, lon) {
         document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lon: ${lon.toFixed(5)}`;
     });
 }
+function findNearby() {
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showMap, showError);
+} else {
+    alert("Geolocation is not supported by this browser.");
+}
+
+}
+
+function showMap(position) {
+
+let lat = position.coords.latitude;
+let lon = position.coords.longitude;
+
+let map = document.getElementById("mapContainer");
+if(!map) return;
+
+map.innerHTML = `
+<iframe
+width="100%"
+height="450"
+style="border:0"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=${lat},${lon}&z=14&output=embed">
+</iframe>
+`;
+
+}
+
+function showError() {
+alert("Unable to retrieve your location.");
+}
