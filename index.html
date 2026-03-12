@@ -13,9 +13,8 @@
         <h1>Citizen Training & Emergency Resources Portal</h1>
         <nav>
             <a href="training.html">Training</a>
-            <a href="#resources">Resources</a>
-            <a href="#report">Report Emergency</a>
-        </nav>
+            <a href="resources.html">Resources</a>
+            <a href="reportemergency.html">Report Emergency</a>        </nav>
     </header>
  
     <main>
@@ -24,102 +23,121 @@
     <div id="trainingText"></div>
     <button onclick="closeTraining()" style="margin-top:10px;">Close</button>
 </div>
-        <!-- Training Section -->
-        <section id="training">
-            <h1>Training Modules</h1>
-            <div class="module" data-title="Fire Safety">
-                <h3>Fire Safety</h3>
-                <p>Learn how to prevent and handle fire emergencies.</p>
-                <button onclick="startTraining('Fire Safety')">Start Module</button>
-            </div>
-            <div class="module" data-title="First Aid Basics">
-                <h3>First Aid Basics</h3>
-                <p>Essential first aid skills for everyone.</p>
-                <button onclick="startTraining('First Aid Basics')">Start Module</button>
-            </div>
-        </section>
- 
-        <!-- Resources Section -->
-        <section id="resources">
-            <h2>Emergency Resources</h2>
-            <ul>
-                <li>Fire Department: 101</li>
-                <li>Police: 100</li>
-                <li>Ambulance: 102</li>
-                <li>Nearest Shelter: Community Hall, Main Street</li>
-            </ul>
-        </section>
- 
-        <!-- Report Emergency Section -->
-        <section id="report">
-            <h2>Report an Emergency</h2>
-            <form id="reportForm">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" required>
-               
-            <label for="location" style="display:flex; align-items:center; gap:10px;">
-  Location:
-  <button type="button" onclick="getLocation()" style="padding:6px 12px; cursor:pointer;">
-    Use My Location
-  </button>
-</label>
+    <section style="background: rgba(255, 255, 255, 0.9); padding: 40px 20px; margin: 40px auto; max-width: 1000px; border-radius: 12px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #222;">
+  <h2 style="text-align: center; color: #cc0000; font-size: 2.5rem; margin-bottom: 30px;">Disaster Awareness & Preparedness</h2>
+  <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 40px;">
+    Natural and man-made disasters have profound impacts on lives, communities, and infrastructure. Awareness, preparation, and timely response are crucial for minimizing loss and saving lives.
+  </p>
 
-<input type="text" id="location" required style="margin-bottom:15px;">
- 
-                <label for="emergencyType">Emergency Type:</label>
-                <select id="emergencyType" required>
-    <option value="">Select Emergency Type</option>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px;">
 
-    <option value="Fire">Fire</option>
-    <option value="Forest Fire">Forest Fire</option>
-    <option value="Gas Leak">Gas Leak</option>
-    <option value="Explosion">Explosion</option>
+    <!-- Disaster Impact Box -->
+   
 
-    <option value="Medical Emergency">Medical Emergency</option>
-    <option value="Heart Attack">Heart Attack</option>
-    <option value="Injury">Serious Injury</option>
-    <option value="Poisoning">Poisoning</option>
+    <!-- Preparedness Box -->
+    <div style="flex: 1 1 300px; min-width: 280px; background: #f5f5f5; border-left: 6px solid #0073b1; padding: 25px; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+      <h3 style="font-size: 1.5rem; color: #004d73; margin-bottom: 15px;">Preparedness Saves Lives</h3>
+      <ul style="font-size: 1.1rem; line-height: 1.6; padding-left: 20px;">
+        <li>Maintain an emergency kit with essentials.</li>
+        <li>Know evacuation routes and safe zones.</li>
+        <li>Stay informed through local alerts and warnings.</li>
+        <li>Participate in community drills and training.</li>
+        <li>Learn basic first aid and CPR techniques.</li>
+      </ul>
+    </div>
 
-    <option value="Flood">Flood</option>
-    <option value="Earthquake">Earthquake</option>
-    <option value="Cyclone">Cyclone / Storm</option>
-    <option value="Landslide">Landslide</option>
-    <option value="Tsunami">Tsunami</option>
-    <option value="Drought">Drought</option>
+    <!-- Community & Response Box -->
+    <div style="flex: 1 1 300px; min-width: 280px; background: #f5f5f5; border-left: 6px solid #ff8c00; padding: 25px; border-radius: 8px; box-shadow: 0 6px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+      <h3 style="font-size: 1.5rem; color: #b35900; margin-bottom: 15px;">Community & Emergency Response</h3>
+      <p style="font-size: 1.1rem; line-height: 1.6;">
+        Strong communities and coordinated emergency response reduce the impact of disasters. Training volunteers, rapid reporting, and early warning systems are essential to save lives and rebuild affected areas efficiently.
+      </p>
+    </div>
 
-    <option value="Road Accident">Road Accident</option>
-    <option value="Train Accident">Train Accident</option>
-    <option value="Aircraft Accident">Aircraft Accident</option>
+  </div>
+</section>
 
-    <option value="Building Collapse">Building Collapse</option>
-    <option value="Bridge Collapse">Bridge Collapse</option>
+<style>
+  section div:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
 
-    <option value="Power Failure">Power Failure</option>
-    <option value="Water Supply Issue">Water Supply Issue</option>
+  /* Serious fade-up animation */
+  @keyframes seriousFadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  section {
+    animation: seriousFadeUp 1s ease forwards;
+  }
+</style>
+<section style="background: rgba(245,245,245,0.95); padding: 40px 20px; margin: 40px auto; max-width: 1100px; border-radius: 12px;">
+  <h2 style="color:#cc0000; font-size:2.5rem; text-align:center; margin-bottom:30px;">Disasters: Understanding the Threat</h2>
+  <p style="font-size:1.2rem; line-height:1.8; max-width:900px; margin:0 auto;">
+    Disasters — both natural and man-made — affect millions of people worldwide each year. Earthquakes, floods, cyclones, and industrial accidents can cause widespread devastation, loss of life, and long-term economic damage. Knowledge, awareness, and preparation reduce risks and save lives.
+  </p>
+</section><section style="background: #f9f9f9; padding:40px 20px; margin:40px auto; max-width:1100px; border-radius:12px;">
+  <h2 style="color:#b71c1c; text-align:center; font-size:2.25rem; margin-bottom:30px;">Global Impact in Numbers</h2>
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:30px; text-align:center;">
 
-    <option value="Animal Attack">Animal Attack</option>
-    <option value="Missing Person">Missing Person</option>
-    <option value="Crime / Theft">Crime / Theft</option>
+    <div style="flex:1 1 250px; min-width:200px; padding:20px; border-radius:10px; background:#ffebee; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3 style="color:#d32f2f; font-size:1.5rem; margin-bottom:15px;">Lives Lost</h3>
+      <p style="font-size:1.2rem;">1.5 Million+</p>
+    </div>
 
-    <option value="Other">Other</option>
-</select>
+    <div style="flex:1 1 250px; min-width:200px; padding:20px; border-radius:10px; background:#e3f2fd; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3 style="color:#1976d2; font-size:1.5rem; margin-bottom:15px;">Displaced</h3>
+      <p style="font-size:1.2rem;">75 Million+</p>
+    </div>
 
-                <label for="contact">Contact Number:</label>
-<input 
-type="tel" 
-id="contact" 
-required 
-placeholder="Enter 10 digit phone number"
-pattern="[0-9]{10}"
-maxlength="10"
-title="Please enter exactly 10 digits"> 
-                <label for="description">Description:</label>
-                <textarea id="description" rows="4" required></textarea>
- 
-                <button type="submit">Submit Report</button>
-            </form>
-            <div id="reportMessage"></div>
-        </section>
+    <div style="flex:1 1 250px; min-width:200px; padding:20px; border-radius:10px; background:#fff8e1; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3 style="color:#f57f17; font-size:1.5rem; margin-bottom:15px;">Lives Saved</h3>
+      <p style="font-size:1.2rem;">500,000+</p>
+    </div>
+
+  </div>
+</section><section style="background: rgba(250,250,250,0.95); padding:40px 20px; margin:40px auto; max-width:1100px; border-radius:12px;">
+  <h2 style="color:#c62828; text-align:center; font-size:2.25rem; margin-bottom:30px;">Major Disaster Types</h2>
+  <div style="display:flex; flex-wrap:wrap; gap:25px; justify-content:center; font-size:1.15rem; line-height:1.6;">
+
+    <div style="flex:1 1 280px; min-width:250px; padding:20px; border-left:6px solid #c62828; background:#fff; border-radius:8px; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3>Earthquakes</h3>
+      <p>Sudden seismic activity can collapse buildings, damage infrastructure, and cause thousands of casualties in densely populated areas.</p>
+    </div>
+
+    <div style="flex:1 1 280px; min-width:250px; padding:20px; border-left:6px solid #1976d2; background:#fff; border-radius:8px; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3>Floods</h3>
+      <p>Heavy rains, cyclones, and dam breaks can submerge towns, destroy crops, and cause waterborne diseases.</p>
+    </div>
+
+    <div style="flex:1 1 280px; min-width:250px; padding:20px; border-left:6px solid #ff8f00; background:#fff; border-radius:8px; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3>Cyclones & Storms</h3>
+      <p>High winds, storm surges, and flooding can destroy homes, power infrastructure, and disrupt communication.</p>
+    </div>
+
+    <div style="flex:1 1 280px; min-width:250px; padding:20px; border-left:6px solid #4caf50; background:#fff; border-radius:8px; box-shadow:0 5px 12px rgba(0,0,0,0.1);">
+      <h3>Man-Made Disasters</h3>
+      <p>Industrial accidents, chemical leaks, and explosions pose immediate threats to health and safety.</p>
+    </div>
+
+  </div>
+</section><section style="background:#f5f5f5; padding:40px 20px; margin:40px auto; max-width:1100px; border-radius:12px;">
+  <h2 style="color:#b71c1c; text-align:center; font-size:2.25rem; margin-bottom:30px;">Preparedness Saves Lives</h2>
+  <ul style="max-width:900px; margin:0 auto; font-size:1.15rem; line-height:1.7; padding-left: 20px;">
+    <li>Prepare an emergency kit with food, water, medicine, and documents.</li>
+    <li>Identify safe zones and evacuation routes in your area.</li>
+    <li>Stay updated with official alerts via TV, radio, or mobile apps.</li>
+    <li>Participate in community drills and awareness programs.</li>
+    <li>Learn basic first aid and CPR to assist others in emergencies.</li>
+    <li>Have a family communication plan in place.</li>
+    <li>Secure your home infrastructure to minimize damage during disasters.</li>
+  </ul>
+</section><section style="background: rgba(250,250,250,0.95); padding:40px 20px; margin:40px auto; max-width:1100px; border-radius:12px;">
+  <h2 style="color:#ff5722; text-align:center; font-size:2.25rem; margin-bottom:30px;">Community & Response</h2>
+  <p style="font-size:1.2rem; line-height:1.7; max-width:900px; margin:0 auto;">
+    Communities that coordinate, communicate, and help each other recover faster. Local volunteers, early warning systems, and rapid reporting are essential to reduce casualties and property damage. Training community responders ensures that aid reaches the most affected areas efficiently.
+  </p>
+</section>
     </main>
  
     <footer>
